@@ -26,7 +26,7 @@ var snow = {
 				x : Math.random() * win_Width,//雪的横坐标
 				y : Math.random() * win_Height,//雪的纵坐标
 				r : Math.random() * 4 + 1,//雪的半径
-				n : Math.random() * 70
+				n : Math.random() * snow.info.number
 			});
 		}
 		var gd = oCanvas.getContext('2d');//用来绘制元素
@@ -39,7 +39,7 @@ var snow = {
 			gd.shadowColor = 'rgba(255, 255, 255, 0.9)';
 			gd.beginPath();
 			//绘制雪
-			for(var i = 0; i < 70; i++){
+			for(var i = 0; i < snow.info.number; i++){
 				var _snowObj = arrSnow[i];
 				gd.moveTo(_snowObj.x, _snowObj.y);
 				gd.arc(_snowObj.x, _snowObj.y, _snowObj.r, 0, Math.PI * 2, 0);
@@ -47,7 +47,7 @@ var snow = {
 			gd.fill();
 			speed += 0.01;
 			//处理雪下落
-			for(var i = 0; i < 70; i++){
+			for(var i = 0; i < snow.info.number; i++){
 				var _snowObj = arrSnow[i];
 				_snowObj.y += Math.cos(speed + _snowObj.n) + _snowObj.r / 2;
 				_snowObj.x += Math.sin(speed) * 2;
